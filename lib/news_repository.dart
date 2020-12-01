@@ -11,7 +11,7 @@ class NewsRepository {
   }) : _httpClient = httpClient;
 
   final _topHeadlinesUrl =
-      'https://newsapi.org/v2/top-headlines?country=us&apiKey=$newsApiKey&pageSize=15&page=1';
+      'https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=$newsApiKey&pageSize=15&page=1';
   final Client _httpClient;
 
   Future<List<NewsArticleModel>> getTopHeadlines() async {
