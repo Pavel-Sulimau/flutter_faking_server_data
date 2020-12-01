@@ -1,25 +1,25 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_faking_server_data/home_screen.dart';
+import 'package:flutter_faking_server_data/app.dart';
+import 'package:flutter_faking_server_data/config.dart';
 
 void main() {
+  if (networkProxy.isNotEmpty) {
+    HttpOverrides.global = _ProxySettingHttpOverrides();
+  }
+
   runApp(App());
 }
 
-class App extends StatelessWidget {
+class _ProxySettingHttpOverrides extends HttpOverrides {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.green),
-      home: Scaffold(
-        body: Container(
-          color: Colors.white,
-          child: SafeArea(
-            top: false,
-            child: HomeScreen(),
-          ),
-        ),
-      ),
-    );
+  HttpClient createHttpClient(SecurityContext context) {
+    final httpClient = super.createHttpClient(context);
+
+    httpClient.badCertificateCallback = (cert, host, port) => true;
+    httpClient.findProxy = (uri) => 'PROXY $networkProxy;';
+
+    return httpClient;
   }
 }

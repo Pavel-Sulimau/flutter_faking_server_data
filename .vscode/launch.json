@@ -11,6 +11,17 @@
             "args": [
                 "--dart-define=NEWS_API_KEY=$NEWS_API_KEY"
             ]
-        }
+        },
+        {
+            "name": "debug app with proxy",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "flutterMode": "debug",
+            "args": [
+                "--dart-define=NEWS_API_KEY=$NEWS_API_KEY",
+                "--dart-define=NETWORK_PROXY=localhost:8888"
+            ]
+        },
     ]
 }
