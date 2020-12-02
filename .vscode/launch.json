@@ -23,5 +23,15 @@
                 "--dart-define=NETWORK_PROXY=localhost:8888"
             ]
         },
+        {
+            "name": "debug app for UI testing",
+            "request": "launch",
+            "type": "dart",
+            "program": "test_driver/app.dart",
+            "flutterMode": "debug",
+            "args": [
+                "--dart-define=NEWS_API_KEY=$NEWS_API_KEY"
+            ]
+        },
     ]
 }

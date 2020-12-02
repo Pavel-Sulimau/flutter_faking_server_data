@@ -15,10 +15,21 @@ dependencies:
   json_annotation: ^3.1.1
 
 dev_dependencies:
+  flutter_driver:
+    sdk: flutter
   flutter_test:
     sdk: flutter
   build_runner: ^1.10.6
   json_serializable: ^3.5.0
+  fake_http_client:
+    git:
+      url: https://github.com/Pavel-Sulimau/http_test_client
+  http_archive:
+    git:
+      url: https://github.com/Pavel-Sulimau/http_archive
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - test_resources/ # TODO: exclude from prod builds
