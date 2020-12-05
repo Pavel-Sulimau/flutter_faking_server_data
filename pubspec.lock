@@ -186,12 +186,10 @@ packages:
   fake_http_client:
     dependency: "direct dev"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "1c39843f0e466c978d4ccd9b9b6c0dcc7cd4e499"
-      url: "https://github.com/Pavel-Sulimau/http_test_client"
-    source: git
-    version: "0.0.2"
+      name: fake_http_client
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.3"
   file:
     dependency: transitive
     description:
@@ -250,12 +248,10 @@ packages:
   http_archive:
     dependency: "direct dev"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "5d7cf18fe609d8f70b5f842fddaff649b0438bc7"
-      url: "https://github.com/Pavel-Sulimau/http_archive"
-    source: git
-    version: "0.0.0"
+      name: http_archive
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0"
   http_multi_server:
     dependency: transitive
     description:
