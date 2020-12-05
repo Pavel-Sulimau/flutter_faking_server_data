@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_faking_server_data/news_article_model.dart';
 import 'package:flutter_faking_server_data/news_repository.dart';
+import 'package:flutter_faking_server_data/ui_keys.dart';
 import 'package:http/io_client.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -25,16 +26,15 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Faking Server Data')),
+      appBar: AppBar(key: Key(UIKeys.appBar), title: Text('Faking Server Data')),
       body: Center(
         child: FutureBuilder<List<NewsArticleModel>>(
           future: _topHeadlinesFuture,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return ListView(
-                children: snapshot.data
-                    .map((x) => _NewsArticleItem(model: x))
-                    .toList(),
+                key: Key(UIKeys.homeHeadlinesList),
+                children: snapshot.data.map((x) => _NewsArticleItem(model: x)).toList(),
               );
             } else if (snapshot.hasError) {
               return Text("An error has occurred :(");

@@ -27,8 +27,7 @@ Future<void> _setHttpOverridesToUseHarCache() async {
   );
 }
 
-Future<HarRoot> _createHarRootFromBundledFile(
-    String bundledFileRelativePath) async {
+Future<HarRoot> _createHarRootFromBundledFile(String bundledFileRelativePath) async {
   final jsonHarString = await rootBundle.loadString(bundledFileRelativePath);
   return HarRoot.fromJson(
     json.decode(jsonHarString) as Map<String, dynamic>,
@@ -56,7 +55,7 @@ class _ProxySettingHttpOverrides extends HttpOverrides {
       )];
 
       if (matchingFakeResponse == null) {
-        fakeResponseBody = 'No response faked for this url: $requestUrl';
+        fakeResponseBody = "No response faked for '$requestUrl'.";
         fakeHttpResponseStatus = HttpStatus.badRequest;
       } else {
         fakeResponseBody = _decodeBody(matchingFakeResponse.content);
@@ -70,20 +69,20 @@ class _ProxySettingHttpOverrides extends HttpOverrides {
       );
     });
   }
-}
 
-dynamic _decodeBody(HarResponseContent responseContent) {
-  final content = responseContent?.text;
+  dynamic _decodeBody(HarResponseContent responseContent) {
+    final content = responseContent?.text;
 
-  if (content.isNotEmpty == true) {
-    if (responseContent.mimeType.startsWith('application/json')) {
-      return utf8.decode(base64.decode(content));
-    } else if (responseContent.mimeType.startsWith('image')) {
-      return base64.decode(content);
+    if (content.isNotEmpty == true) {
+      if (responseContent.mimeType.startsWith('application/json')) {
+        return utf8.decode(base64.decode(content));
+      } else if (responseContent.mimeType.startsWith('image')) {
+        return base64.decode(content);
+      } else {
+        return content;
+      }
     } else {
-      return content;
+      return '';
     }
-  } else {
-    return '';
   }
 }

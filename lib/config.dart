@@ -1,6 +1,6 @@
 const String newsApiKey = String.fromEnvironment(
   'NEWS_API_KEY',
-  defaultValue: 'ADD YOUR KEY HERE OR IN THE ENV VARIABLE',
+  defaultValue: 'fd24f74a042b4a988fc276182fcfce87', // you can use my key or override it with yours
 );
 
 const String networkProxy = String.fromEnvironment(

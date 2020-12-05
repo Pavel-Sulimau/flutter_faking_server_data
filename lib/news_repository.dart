@@ -20,12 +20,13 @@ class NewsRepository {
     if (response.statusCode == 200) {
       final Iterable<dynamic> rawArticles =
           (json.decode(response.body) as Map<String, dynamic>)['articles'];
-      final articles = rawArticles
-          .map((a) => NewsArticleModel.fromJson(a as Map<String, dynamic>))
-          .toList();
+      final articles =
+          rawArticles.map((a) => NewsArticleModel.fromJson(a as Map<String, dynamic>)).toList();
       return articles;
     } else {
-      throw Exception('Request failed');
+      throw Exception(
+        "Request failed. It may be because you didn't use the right API Key. Please check it.",
+      );
     }
   }
 }

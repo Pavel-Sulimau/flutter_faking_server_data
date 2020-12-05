@@ -19,6 +19,7 @@ dev_dependencies:
     sdk: flutter
   flutter_test:
     sdk: flutter
+  test: any
   build_runner: ^1.10.6
   json_serializable: ^3.5.0
   fake_http_client: ^0.0.3
@@ -28,4 +29,4 @@ flutter:
   uses-material-design: true
 
   assets:
-    - test_resources/ # TODO: exclude from prod builds
+    - test_resources/ # TODO: exclude from prod builds (automate it with a script)
